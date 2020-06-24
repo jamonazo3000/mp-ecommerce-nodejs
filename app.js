@@ -20,7 +20,6 @@ app.get('/', function (req, res) {
 
 app.get('/detail', function (req, res) {
     item = req.query;
-    console.log(item);
     let preference = {
         items: [
             {
@@ -38,12 +37,12 @@ app.get('/detail', function (req, res) {
             email: "test_user_58295862@testuser.com",
             phone: {
                 area_code: '52',
-                number: 5549737300
+                number: '5549737300'
             },
             address: {
+                zip_code: '03940',
                 street_name: "Insurgentes Sur",
-                street_number: 1602,
-                zip_code: '03940'
+                street_number: '1602'
             }
         },
         payment_methods :{
@@ -68,7 +67,9 @@ app.get('/detail', function (req, res) {
     mercadopago.preferences.create(preference)
         .then(function (response) {
             global.init_point = response.body.init_point;
+            console.log('preference id: ' + response.body);
             console.log('preference id: ' + response.body.id);
+
             req.query.init_point = response.body.init_point;
             res.render('detail', req.query);
         }).catch(function (error) {
@@ -91,17 +92,11 @@ app.get('/pending', function (req, res) {
     res.send(req.query);
 });
 
-
 app.post('/webhook', function (req, res) {
-    console.log('*************************');
-    console.log('webhook req   *************************');
+    console.log('webhook query               *******');
     console.log(req.query);
-    console.log('webhook query *************************');
-    console.log(req.query);
-    console.log('webhook body  *************************');
-    console.log(req.query.body);
     console.log('*************************');
-    res.sendStatus(200);
+    res.sendStatus(201);
 });
 
 
