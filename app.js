@@ -24,7 +24,7 @@ app.get('/detail', function (req, res) {
     let preference = {
         items: [
             {
-                id: 12342,
+                id: 1234,
                 title: item.title,
                 description: 'Dispositivo móvil de Tienda e-commerce',
                 picture_url: 'https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/'+item.img.substring(2,item.img.length),
@@ -77,26 +77,30 @@ app.get('/detail', function (req, res) {
 });
 
 app.get('/success', function (req, res) {
-    //res.render('success');
-    console.log(req.query);
+    //console.log(req.query);
     res.send(req.query);
 });
 
 app.get('/failure', function (req, res) {
-    console.log(req.query);
+    //console.log(req.query);
     res.send(req.query);
 });
 
 app.get('/pending', function (req, res) {
-    console.log(req.query);
+    //console.log(req.query);
     res.send(req.query);
 });
 
 
 app.post('/webhook', function (req, res) {
-    console.log('webhook*************************');
+    console.log('*************************');
+    console.log('webhook req   *************************');
     console.log(req.query);
-    
+    console.log('webhook query *************************');
+    console.log(req.query);
+    console.log('webhook body  *************************');
+    console.log(req.query.body);
+    console.log('*************************');
     res.sendStatus(200);
 });
 
