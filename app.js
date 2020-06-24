@@ -24,7 +24,7 @@ app.get('/detail', function (req, res) {
     let preference = {
         items: [
             {
-                id: 1234,
+                id: 12342,
                 title: item.title,
                 description: 'Dispositivo móvil de Tienda e-commerce',
                 picture_url: 'https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/'+item.img.substring(2,item.img.length),
@@ -43,7 +43,7 @@ app.get('/detail', function (req, res) {
             address: {
                 street_name: "Insurgentes Sur",
                 street_number: 1602,
-                zip_code: "03940"
+                zip_code: '03940'
             }
         },
         payment_methods :{
