@@ -65,16 +65,12 @@ app.get('/detail', function (req, res) {
         external_reference: 'nico17.ngl@gmail.com'
     };
 
-    console.log(preference.items[0].picture_url);
-
     mercadopago.preferences.create(preference)
         .then(function (response) {
             global.init_point = response.body.init_point;
-            console.log('init point: ' + global.init_point);
             console.log('preference id: ' + response.body.id);
             req.query.init_point = response.body.init_point;
             res.render('detail', req.query);
-
         }).catch(function (error) {
             console.log(error);
         });
@@ -98,6 +94,7 @@ app.get('/pending', function (req, res) {
 
 
 app.post('/webhook', function (req, res) {
+    console.log('webhook*************************');
     console.log(req.query);
     
     res.sendStatus(200);
