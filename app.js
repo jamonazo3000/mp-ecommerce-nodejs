@@ -96,6 +96,13 @@ app.get('/pending', function (req, res) {
 });
 
 
+app.post('/webhook', function (req, res) {
+    console.log(req.query);
+    
+    res.sendStatus(200);
+});
+
+
 app.use(express.static('assets'));
 
 app.use('/assets', express.static(__dirname + '/assets'));
