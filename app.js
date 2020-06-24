@@ -27,13 +27,39 @@ app.get('/detail', function (req, res) {
                 id: 1234,
                 title: item.title,
                 description: 'Dispositivo móvil de Tienda e-commerce',
-                picture_url: 'https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/'+item.img,
+                picture_url: 'https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/'+item.img.substring(2,item.img.length),
                 unit_price: parseInt(item.price),
                 quantity: 1,
             }
         ],
-        external_reference: 'nico17.ngl@gmail.com',
+        payer: {
+            name: "Lalo",
+            surname: "Landa",
+            email: "test_user_58295862@testuser.com",
+            phone: {
+                area_code: '52',
+                number: 5549737300
+            },
+            address: {
+                street_name: "Insurgentes Sur",
+                street_number: 1602,
+                zip_code: "03940"
+            }
+        },
+        payment_methods :{
+            excluded_payment_methods :[
+                {id:"amex"}
+            ],
+            excluded_payment_types :[
+                {id:"atm"}
+            ],
+            installments: 6
+        },
+        //auto_return: "all",
+        external_reference: 'nico17.ngl@gmail.com'
     };
+
+    console.log(preference.items[0].picture_url);
 
     mercadopago.preferences.create(preference)
         .then(function (response) {
