@@ -6,7 +6,7 @@ var mercadopago = require('mercadopago');
 mercadopago.configure({
     sandbox: false,
     integrator_id:"dev_24c65fb163bf11ea96500242ac130004",
-    access_token: 'APP_USR-6718728269189792-112017-dc8b338195215145a4ec035fdde5cedf-491494389'
+    access_token: 'APP_USR-8058997674329963-062418-89271e2424bb1955bc05b1d7dd0977a8-592190948'
 });
 
 var app = express();
@@ -27,10 +27,9 @@ app.get('/detail', function (req, res) {
                 id: 1234,
                 title: item.title,
                 description: 'Dispositivo móvil de Tienda e-commerce',
-                picture_url: item.img,
+                picture_url: 'https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/'+item.img,
                 unit_price: parseInt(item.price),
                 quantity: 1,
-                
             }
         ],
         external_reference: 'nico17.ngl@gmail.com',
@@ -40,9 +39,7 @@ app.get('/detail', function (req, res) {
         .then(function (response) {
             
             global.init_point = response.body.init_point;
-
             console.log('init point: ' + global.init_point);
-            console.log('collector id: ' + response.body.collector_id);
             console.log('preference id: ' + response.body.id);
             req.query.init_point = response.body.init_point;
             res.render('detail', req.query);
