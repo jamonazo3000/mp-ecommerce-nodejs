@@ -4,7 +4,7 @@ var exphbs = require('express-handlebars');
 
 var mercadopago = require('mercadopago');
 mercadopago.configure({
-    access_token: 'APP_USR-6718728269189792-112017-dc8b338195215145a4ec035fdde5cedf-491494389'
+    access_token: 'TEST-3281958681696328-121705-82d4c2491f00b7d04a5fc70a64e53e0c-135489656'
 });
 
 var app = express();
@@ -17,32 +17,23 @@ app.get('/', function (req, res) {
 });
 
 app.get('/detail', function (req, res) {
-    item = req.query;
-    console.log(item);
     let preference = {
         items: [
-            {
-                id: 1234,
-                title: item.title,
-                description: 'Dispositivo móvil de Tienda e-commerce',
-                picture_url: item.img,
-                unit_price: parseInt(item.price),
-                quantity: 1,
-                external_reference: 'nico17.ngl@gmail.com'
-            }
-        ],
-    };
-
-    mercadopago.preferences.create(preference)
-        .then(function (response) {
-            global.init_point = response.body.init_point;
-            console.log('init point: ' + global.init_point);
-            console.log('preference id: ' + response.body.id);
-            req.query.id = response.body.id;
-            res.render('detail', req.query);
-        }).catch(function (error) {
-            console.log(error);
-        });
+          {
+            title: 'Mi producto',
+            unit_price: 100,
+            quantity: 1,
+          }
+        ]
+      };
+      
+      mercadopago.preferences.create(preference)
+      .then(function(response){
+        global.init_point = response.body.init_point;
+      }).catch(function(error){
+        console.log(error);
+      });
+        res.render('detail', req.query);
 });
 
 app.use(express.static('assets'));
