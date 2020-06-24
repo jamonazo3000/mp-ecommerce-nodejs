@@ -79,18 +79,18 @@ app.get('/detail', function (req, res) {
         });
 });
 
-app.post('/success', function (req, res) {
+app.get('/success', function (req, res) {
     //res.render('success');
     console.log(req.query);
     res.send(req.query);
 });
 
-app.post('/failure', function (req, res) {
+app.get('/failure', function (req, res) {
     console.log(req.query);
     res.send(req.query);
 });
 
-app.post('/pending', function (req, res) {
+app.get('/pending', function (req, res) {
     console.log(req.query);
     res.send(req.query);
 });
