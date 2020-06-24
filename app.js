@@ -37,12 +37,12 @@ app.get('/detail', function (req, res) {
             email: "test_user_58295862@testuser.com",
             phone: {
                 area_code: '52',
-                number: '5549737300'
+                number: Number('5549737300')
             },
             address: {
                 zip_code: '03940',
                 street_name: "Insurgentes Sur",
-                street_number: '1602'
+                street_number: parseInt('1602')
             }
         },
         payment_methods :{
