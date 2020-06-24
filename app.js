@@ -1,4 +1,5 @@
 var express = require('express');
+var port = process.env.PORT || 3000;
 var exphbs  = require('express-handlebars');
  
 var app = express();
@@ -18,4 +19,6 @@ app.use(express.static('assets'));
  
 app.use('/assets', express.static(__dirname + '/assets'));
  
-app.listen(80);
+app.listen(port, function () {
+    console.log('Example app listening on port !');
+   });
