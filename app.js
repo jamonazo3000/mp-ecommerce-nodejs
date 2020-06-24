@@ -55,7 +55,12 @@ app.get('/detail', function (req, res) {
             ],
             installments: 6
         },
-        //auto_return: "all",
+        back_urls: {
+            "success": "https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/success",
+            "failure": "https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/failure",
+            "pending": "https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/pending"
+        },
+        auto_return: "approved",
         external_reference: 'nico17.ngl@gmail.com'
     };
 
@@ -63,7 +68,6 @@ app.get('/detail', function (req, res) {
 
     mercadopago.preferences.create(preference)
         .then(function (response) {
-            
             global.init_point = response.body.init_point;
             console.log('init point: ' + global.init_point);
             console.log('preference id: ' + response.body.id);
@@ -74,6 +78,23 @@ app.get('/detail', function (req, res) {
             console.log(error);
         });
 });
+
+app.post('/success', function (req, res) {
+    //res.render('success');
+    console.log(req.query);
+    res.send(req.query);
+});
+
+app.post('/failure', function (req, res) {
+    console.log(req.query);
+    res.send(req.query);
+});
+
+app.post('/pending', function (req, res) {
+    console.log(req.query);
+    res.send(req.query);
+});
+
 
 app.use(express.static('assets'));
 
