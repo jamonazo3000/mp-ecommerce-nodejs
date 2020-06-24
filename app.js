@@ -60,6 +60,7 @@ app.get('/detail', function (req, res) {
             "failure": "https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/failure",
             "pending": "https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/pending"
         },
+        notification_url: "https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/webhook",
         auto_return: "approved",
         external_reference: 'nico17.ngl@gmail.com'
     };
