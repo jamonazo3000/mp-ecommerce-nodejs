@@ -1,4 +1,6 @@
 var express = require('express');
+const bodyParser = require('body-parser');
+
 var port = process.env.PORT || 3000;
 var exphbs = require('express-handlebars');
 
@@ -10,6 +12,10 @@ mercadopago.configure({
 });
 
 var app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
@@ -91,9 +97,14 @@ app.get('/pending', function (req, res) {
     res.send(req.query);
 });
 
-app.post('/webhook', function (req, res) {
-    console.log(req.body);
-    console.log(res.body);
+/*app.post('/webhook', function (req, res) {
+    console.log('webhook');
+    console.log(req.query);
+    res.sendStatus(200);
+});*/
+
+app.post('/webhook', (req, res) => {
+    console.log('Got body:', req.body);
     res.sendStatus(200);
 });
 
