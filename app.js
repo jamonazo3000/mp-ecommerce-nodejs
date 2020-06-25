@@ -97,16 +97,16 @@ app.get('/pending', function (req, res) {
     res.send(req.query);
 });
 
-/*app.post('/webhook', function (req, res) {
-    console.log('webhook');
-    console.log(req.query);
-    res.sendStatus(200);
-});*/
-
-app.get('/webhook', (req, res) => {
+app.post('/webhook', function (req, res) {
+    console.log('webhook *********************');
     console.log(req.body);
     res.sendStatus(200);
 });
+
+/*app.get('/webhook', (req, res) => {
+    console.log(req.body);
+    res.sendStatus(200);
+});*/
 
 
 app.use(express.static('assets'));
