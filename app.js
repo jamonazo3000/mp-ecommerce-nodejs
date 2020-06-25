@@ -104,7 +104,7 @@ app.get('/pending', function (req, res) {
 });*/
 
 app.post('/webhook', (req, res) => {
-    console.log('Got body:', req.body);
+    console.log(req.body);
     res.sendStatus(200);
 });
 
