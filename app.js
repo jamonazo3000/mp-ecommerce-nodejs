@@ -27,7 +27,7 @@ app.get('/detail', function (req, res) {
                 title: item.title,
                 description: 'Dispositivo móvil de Tienda e-commerce',
                 picture_url: 'https://nicolasgl-mp-ecommerce-nodejs.herokuapp.com/'+item.img.substring(2,item.img.length),
-                unit_price: parseInt(item.price),
+                unit_price: parseFloat(item.price),
                 quantity: 1,
             }
         ],
@@ -78,7 +78,6 @@ app.get('/detail', function (req, res) {
 });
 
 app.get('/success', function (req, res) {
-    //console.log(req.query);
     res.send(req.query);
 });
 
@@ -94,9 +93,7 @@ app.get('/pending', function (req, res) {
 
 app.post('/webhook', function (req, res) {
     console.log('webhook query               *******');
-    console.log(req.query);
-    console.log('webhook body               *******');
-    console.log(req.body);
+    console.log(req.query.type);
     res.sendStatus(200);
 });
 
