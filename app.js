@@ -37,12 +37,12 @@ app.get('/detail', function (req, res) {
             email: "test_user_58295862@testuser.com",
             phone: {
                 area_code: '52',
-                number: Number('5549737300')
+                number: 5549737300
             },
             address: {
                 zip_code: '03940',
                 street_name: "Insurgentes Sur",
-                street_number: parseInt('1602')
+                street_number: 1602
             }
         },
         payment_methods :{
@@ -67,7 +67,7 @@ app.get('/detail', function (req, res) {
     mercadopago.preferences.create(preference)
         .then(function (response) {
             global.init_point = response.body.init_point;
-            console.log('preference id: ' + response.body);
+            console.log(response.body);
             console.log('preference id: ' + response.body.id);
 
             req.query.init_point = response.body.init_point;
@@ -94,9 +94,9 @@ app.get('/pending', function (req, res) {
 
 app.post('/webhook', function (req, res) {
     console.log('webhook query               *******');
+    console.log(req);
     console.log(req.query);
-    console.log('*************************');
-    res.sendStatus(201);
+    res.sendStatus(200);
 });
 
 
